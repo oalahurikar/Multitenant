@@ -9,7 +9,12 @@ Rails.application.routes.draw do
      scope module: "accounts" do
      root to: "todos#index", as: :account_root
      resources :todos
-     resources :invitations, only: [:new, :create]
+     resources :invitations, only: [:new, :create] do
+          member do
+              get :accept
+              patch :accepted
+          end
+      end
     end
 
   end

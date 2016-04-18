@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 #gem 'therubyracer'
 #gem 'execjs'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'devise', '~> 3.5', '>= 3.5.6'
