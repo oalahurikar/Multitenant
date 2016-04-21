@@ -5,5 +5,5 @@ class InvitationMailer < ApplicationMailer
        to: invitation.email,
        subject: "Invitation to join #{invitation.account.name} on BDynamics"
        )
-   end
+  end
 end

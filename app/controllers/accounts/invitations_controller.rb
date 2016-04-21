@@ -3,19 +3,26 @@ module Accounts
      skip_before_action :authenticate_user!, only: [:accept, :accepted]
      skip_before_action :authorize_user!, only: [:accept, :accepted]
      before_action :authorize_owner!, except: [:accept, :accepted]
+      
       def new
           @invitation = Invitation.new
       end
+      
       def create
           @invitation = current_account.invitations.new(invitation_params)
-          @invitation.save
-          InvitationMailer.invite(@invitation).deliver_now
-          flash[:notice] = "#{@invitation.email} has been invited."
-          redirect_to root_url
+          if @invitation.save
+             InvitationMailer.invite(@invitation).deliver
+             flash[:notice] = "#{@invitation.email} has been invited."
+             redirect_to root_url
+          else
+             render :action => 'new'
           end
+       end
+       
       def accept
            @invitation = Invitation.find(params[:id])
       end
+      
       def accepted
           @invitation = Invitation.find(params[:id])
           user_params = params[:user].permit(

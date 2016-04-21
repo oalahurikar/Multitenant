@@ -9,7 +9,8 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-
+# pretty print Ruby objects to visualize their structure
+gem 'awesome_print', '~> 1.6', '>= 1.6.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
