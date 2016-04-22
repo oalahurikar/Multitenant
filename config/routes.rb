@@ -3,12 +3,14 @@ require "constraints/subdomain_required"
 Rails.application.routes.draw do
 
 
+  
   devise_for :users
 
   constraints(SubdomainRequired) do
      scope module: "accounts" do
      root to: "todos#index", as: :account_root
      resources :todos
+     resources :invoices
      resources :invitations, only: [:new, :create] do
           member do
               get :accept
